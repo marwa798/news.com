@@ -21,4 +21,7 @@ if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
 
 require_once __DIR__.'/public/index.php';
 
-// ( . ) يعني هتضيفي كل الملفات عشان تترفع او لو عايزا فايل معين
+
+// git add
+// git commit -m "MSG"
+// git push origin master

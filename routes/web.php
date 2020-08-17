@@ -18,21 +18,42 @@ Route::get('/', function () {
 });
 Route::get('/about', 'pagesController@about');
 
-Route::get('/news', function () {
-    return view('pages.news');
-});
+//Route::get('/news', function () {
+//    return view('pages.news');
+//});
 
-Route::get('/add', function () {
-    return view('pages.add');
-});
+//Route::get('/profile', function () {
+//    return view('pages.profile');
+//});
 
-Route::get('/profile', function () {
-    return view('pages.profile');
-});
-
-Route::get('/githup', function () {
-    return "Git hup";
-});
+Route::get('/news','postController@index');
 
 
+Route::get('/news/create','postController@create');
+Route::post('/news/store','postController@store');
 
+Route::get('/news/{post}','postController@show');
+
+Route::get('/news/{id}/edit','postController@edit');
+Route::put('/news/{id}/update','postController@update');
+
+Route::get('/news/{id}/delete','postController@destroy');
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/profile', 'pagesController@profile');
+
+Route::get('/profile/{id}/edit','pagesController@edit');
+Route::put('/profile/{id}/update','pagesController@update');
+
+Route::get('/profile/{id}/changePassword','pagesController@changePassword');
+Route::put('/profile/{id}/updatePassword','pagesController@updatePassword');
+
+
+//comments
+
+Route::put('/news/{post}/comment','CommentsController@store');

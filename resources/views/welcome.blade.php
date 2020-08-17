@@ -87,9 +87,11 @@
                 <div class="links">
                     <a href="/">Home</a>
                     <a href="/news">News</a>
-                    <a href="/add">Add New</a>
+                    @auth
+                    <a href="/news/create">Add New</a>
                     <a href="/profile">Profile</a>
-                    <a href="/githup">GitHup</a>
+                    @endauth
+                    <a href="https://github.com/marwa798/news.com">GitHup</a>
                     <a href="/about">About</a>
                 </div>
             </div>

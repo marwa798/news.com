@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Desktop/Marwa Mahmoud Ebrahim Nwareg/aphrodite/aphrodite/.idea/aphrodite.iml" filepath="$USER_HOME$/Desktop/Marwa Mahmoud Ebrahim Nwareg/aphrodite/aphrodite/.idea/aphrodite.iml" />
+      <module fileurl="file://$USER_HOME$/blog/.idea/blog.iml" filepath="$USER_HOME$/blog/.idea/blog.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/laravelSite.iml" filepath="$PROJECT_DIR$/.idea/laravelSite.iml" />
     </modules>
   </component>

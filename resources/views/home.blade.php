@@ -26,7 +26,6 @@
 
                                                 <div class="col-lg-4">
                                                     <div class="card">
-                                                        {{--<img class="card-img-top img-fluid" src="{{getImage($pic->image)}}" alt="Card image cap">--}}
                                                         <div class="card-body">
                                                             <h3 class="card-title mt-0">{{$post->title}}</h3>
                                                             <hr>

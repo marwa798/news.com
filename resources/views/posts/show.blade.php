@@ -29,25 +29,26 @@
 
             {{--show comments--}}
 
-            {{--<div class="comments">--}}
-                {{--@foreach($post->comments as $comment)--}}
-                    {{--<p>{{$comment->body}}</p>--}}
-                {{--@endforeach--}}
-            {{--</div>--}}
+            <div class="comments">
+                @foreach($post->comments as $comment)
+                    <p>{{$comment->body}}</p>
+                @endforeach
+            </div>
 
+            @auth
             {{--write comment--}}
-            <form action={{"/news/" . $post->id . "/comment"}} method="post">
+            <form action={{"/news/" . $post->id . "/comment"}} method="POST">
                 @csrf
-                @method('put')
 
                 <div class="form-group">
-                    <input type="comment" name="title" id="comment" class="form-control" placeholder="write comment ..">
+                    <textarea  name="body" id="body" class="form-control" placeholder="write comment .."></textarea>
                 </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add Comment</button>
                 </div>
             </form>
+                @endauth
         </div>
     </div>
 

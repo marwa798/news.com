@@ -126,7 +126,7 @@
 
                                     <a href="{{url('/profile')}}" class="dropdown-item">Profile</a>
 
-                                    <a href="{{"/profile/" . auth()->user()->id . "/edit"}}" class="dropdown-item">Edit Profile</a>
+                                    <a href="{{url('/profile/edit')}}" class="dropdown-item">Edit Profile</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

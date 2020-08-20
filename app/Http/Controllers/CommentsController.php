@@ -34,17 +34,20 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, posts $post)
+    public function store(Request $request, $id)
     {
         $request->validate([
             'body' => 'required'
         ]);
 
+
         $comment = new comments();
-        $comment ->body = $request->body;
-        $comment ->user_id = auth()->user()->id;
-        $comment -> post_id = $post->id;
-        $comment -> save();
+        $comment->body = $request->get('body');
+        $comment->user_id = auth()->user()->id;
+        $comment->post_id = $id;
+        $comment->save();
+
+        return redirect('posts.show');
     }
 
     /**

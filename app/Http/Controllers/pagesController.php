@@ -8,75 +8,71 @@ use Illuminate\Support\Facades\Hash;
 
 class pagesController extends Controller
 {
-    public function about (){
+    public function about()
+    {
         $data = [
             'Developer' => 'Marwa Mahmoud',
             'Phone' => '01000402218',
             'Contact us' => 'marwa.m.ebrahim@gmail.com'
         ];
         $title = 'about';
-        return view('pages.about',compact('data','title'));
+        return view('pages.about', compact('data', 'title'));
     }
 
-    public function Profile (){
+    public function Profile()
+    {
 
         $user = auth()->user();
         $posts = $user->posts;
-        return view('home',compact('posts'));
+        return view('home', compact('posts'));
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $user = User::find($id);
+        $user = auth()->user();
 
-        if (auth()->user()->id !== $user->id) {
-            return redirect('/profile')->with('error', 'you are not authorised');
-        }
+//        if (auth()->user()->id !== $user->id) {
+//            return redirect('/profile')->with('error', 'you are not authorised');
+//        }
         return view('pages.editProfile', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'name' => 'required|min:3',
             'email' => 'required|email'
         ]);
 
-        $user = User::find($id);
-        $user-> name = $request->name;
-        $user-> email = $request->email;
+        $user = auth()->user();
+        $user->name = $request->name;
+        $user->email = $request->email;
         $user->save();
 
         return redirect('profile')->with('status', 'profile updated successfully');
     }
 
-    public function changePassword ($id)
+    public function changePassword()
     {
-        $user = User::find($id);
 
-        if (auth()->user()->id !== $user->id) {
-            return redirect('/login');
-        }
         return view('pages.changePassword');
-}
+    }
 
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(Request $request)
     {
         $request->validate([
             'old_password' => 'required|min:8',
             'Password' => 'required|min:8|confirmed'
         ]);
 
-        $user = User::find($id);
-        $pass = Hash::make($request->password);
+        $user = authApi()->user();
+        $pass = Hash::make($request->get('old_password'));
 
-        if ($user->password == $pass){
-            $user->password = $pass;
+        if ($user->password == $pass) {
+            $user->password = Hash::make($request->get('password'));
             $user->save();
             return redirect('profile')->with('status', 'password updated successfully');
-        }
-
-        else {
+        } else {
             return redirect('profile')->with('status', 'password is not correct');
         }
     }

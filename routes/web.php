@@ -47,13 +47,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('/profile', 'pagesController@profile');
 
-Route::get('/profile/{id}/edit','pagesController@edit');
-Route::put('/profile/{id}/update','pagesController@update');
+//update profile
+Route::get('/profile/edit','pagesController@edit');
+Route::put('/profile/update','pagesController@update');
 
-Route::get('/profile/{id}/changePassword','pagesController@changePassword');
-Route::put('/profile/{id}/updatePassword','pagesController@updatePassword');
+//change password
+Route::get('/profile/changePassword','pagesController@changePassword');
+Route::put('/profile/updatePassword','pagesController@updatePassword');
 
 
 //comments
-
-Route::put('/news/{post}/comment','CommentsController@store');
+Route::post('/news/{id}/comment','CommentsController@store');

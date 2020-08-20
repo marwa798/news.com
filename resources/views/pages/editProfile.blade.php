@@ -10,7 +10,7 @@
         <h3> Edit Profile </h3>
         <hr>
 
-        <form action={{"/profile/" . auth()->user()->id . "/update"}} method="post" enctype="multipart/form-data">
+        <form action={{url('/profile/update')}} method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="form-group">
@@ -28,6 +28,6 @@
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>
-        <a href="{{"/profile/" . auth()->user()->id . "/changePassword"}}" class="btn btn-primary">Change Password</a>
+        <a href="{{url('/profile/changePassword')}}" class="btn btn-primary">Change Password</a>
     </div>
 @endsection

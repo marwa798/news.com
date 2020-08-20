@@ -8,14 +8,16 @@
                     <div class="card-header">Change Password</div>
 
                     <div class="card-body">
-                        <form method="PUT" action="{{'/profile/' . auth()->user()->id . '/updatePassword'}}">
+                        <form method="POST" action="{{url('/profile/updatePassword')}}">
                             @csrf
+                            <input type="hidden" name="_method" value="PUT">
+
 
                             <div class="form-group row">
-                                <label for="old-pass" class="col-md-4 col-form-label text-md-right">Old Password</label>
+                                <label for="old_password" class="col-md-4 col-form-label text-md-right">Old Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="old-pass" type="password" class="form-control @error('password') is-invalid @enderror" name="old-pass">
+                                    <input id="old_password" type="password" class="form-control @error('password') is-invalid @enderror" name="old_password"required autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -27,10 +29,10 @@
 
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">New Password</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -41,10 +43,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
 
